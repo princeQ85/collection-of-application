@@ -1,125 +1,228 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Collection of Application</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collection of Application - Premium Apps for Everyone</title>
   <style>
-    /* Teal/Green Gradient Background */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #008080, #20b2aa);
-      color: white;
-      overflow-x: hidden;
-      display: flex;
-      flex-direction: column;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(135deg, #00b4db 0%, #0083b0 100%);
+      color: #333;
       min-height: 100vh;
-      animation: backgroundShift 10s ease-in-out infinite alternate;
+      animation: fadeIn 1s ease-in;
     }
-
-    @keyframes backgroundShift {
-      0% {background: linear-gradient(135deg, #008080, #20b2aa);}
-      50% {background: linear-gradient(135deg, #006666, #3cb371);}
-      100% {background: linear-gradient(135deg, #008080, #20b2aa);}
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes slideInUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+    .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+    .navbar {
+      background: rgba(255,255,255,0.95); padding: 15px 30px; border-radius: 50px;
+      display: flex; justify-content: space-between; align-items: center;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.1); margin-bottom: 40px;
+      animation: slideInDown 0.8s ease-out;
     }
-
-    header {
-      text-align: center;
-      padding: 3rem 1rem 1rem;
-      animation: fadeInDown 1.5s ease forwards;
+    @keyframes slideInDown { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    .logo {
+      font-size: 24px; font-weight: 800;
+      background: linear-gradient(135deg, #00b4db 0%, #0083b0 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
-
-    @keyframes fadeInDown {
-      0% {
-        opacity: 0;
-        transform: translateY(-30px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .nav-links { display: flex; gap: 30px; list-style: none; }
+    .nav-links a { text-decoration: none; color: #555; font-weight: 600; transition: color 0.3s; }
+    .nav-links a:hover { color: #0083b0; }
+    .hero {
+      text-align: center; color: white; padding: 80px 20px;
+      animation: slideInUp 0.8s ease-out 0.2s both;
     }
-
-    h1 {
-      font-size: 3rem;
-      margin: 0;
-      letter-spacing: 0.1em;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+    .hero h1 { font-size: 64px; font-weight: 900; margin-bottom: 20px; text-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+    .hero p { font-size: 24px; margin-bottom: 40px; opacity: 0.9; }
+    .powered-by {
+      font-size: 16px; background: rgba(255,255,255,0.2);
+      padding: 10px 25px; border-radius: 30px; display: inline-block;
+      animation: pulse 2s infinite;
     }
-
-    main {
-      flex-grow: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 2rem;
-      animation: fadeInUp 1.5s ease forwards;
-      animation-delay: 1.5s;
-      opacity: 0;
+    .stats {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin: 60px 0;
     }
-
-    @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
+    .stat-card {
+      background: rgba(255,255,255,0.95); padding: 40px; border-radius: 20px;
+      text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s; animation: slideInUp 0.8s ease-out both;
     }
-
-    .content-box {
-      background: rgba(255, 255, 255, 0.15);
-      border-radius: 15px;
-      padding: 2rem 3rem;
-      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      max-width: 600px;
-      text-align: center;
-      animation: pulseGlow 3s ease-in-out infinite;
+    .stat-card:hover { transform: translateY(-10px) scale(1.02); box-shadow: 0 30px 80px rgba(0,0,0,0.15); }
+    .stat-number {
+      font-size: 48px; font-weight: 900;
+      background: linear-gradient(135deg, #00b4db 0%, #0083b0 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
-
-    @keyframes pulseGlow {
-      0%, 100% {
-        box-shadow: 0 0 15px 5px rgba(32, 178, 170, 0.6);
-      }
-      50% {
-        box-shadow: 0 0 25px 10px rgba(32, 178, 170, 0.9);
-      }
+    .stat-label { color: #666; font-weight: 600; }
+    .section {
+      background: rgba(255,255,255,0.95); padding: 60px; border-radius: 30px;
+      margin-bottom: 40px; box-shadow: 0 20px 60px rgba(0,0,0,0.1);
     }
-
-    footer {
-      text-align: center;
-      padding: 1rem;
-      font-size: 1rem;
-      background: rgba(0, 0, 0, 0.2);
-      color: #d0f0e0;
-      animation: fadeIn 2s ease forwards;
+    .section h2 {
+      font-size: 36px; margin-bottom: 30px;
+      background: linear-gradient(135deg, #00b4db 0%, #0083b0 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
-
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
+    .apps-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px; margin-top: 40px;
     }
-
+    .app-card {
+      background: linear-gradient(135deg, #00b4db 0%, #0083b0 100%);
+      padding: 40px; border-radius: 20px; color: white; text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .app-card:hover { transform: translateY(-10px) rotate(2deg); box-shadow: 0 20px 60px rgba(0,180,219,0.4); }
+    .app-card h3 { font-size: 24px; margin-bottom: 15px; }
+    .developer { display: flex; gap: 40px; align-items: center; }
+    .developer img {
+      width: 200px; height: 200px; border-radius: 50%; object-fit: cover;
+      border: 5px solid white; box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+      animation: pulse 3s infinite;
+    }
+    .developer-info h3 { font-size: 32px; margin-bottom: 20px; }
+    .developer-quote {
+      font-size: 24px; font-style: italic; color: #0083b0; margin: 20px 0;
+    }
+    .skills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+    .skill-tag {
+      background: linear-gradient(135deg, #00b4db 0%, #0083b0 100%);
+      color: white; padding: 8px 20px; border-radius: 20px; font-size: 14px;
+      font-weight: 600; transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .skill-tag:hover { transform: scale(1.1); box-shadow: 0 5px 20px rgba(0,180,219,0.4); }
+    .social-links {
+      display: flex; justify-content: center; gap: 30px; margin-top: 40px;
+    }
+    .social-btn {
+      background: linear-gradient(135deg, #00b4db 0%, #0083b0 100%);
+      color: white; padding: 15px 40px; border-radius: 50px; text-decoration: none;
+      font-weight: 600; transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 10px 30px rgba(0,180,219,0.4);
+    }
+    .social-btn:hover {
+      transform: translateY(-5px) scale(1.05); box-shadow: 0 15px 40px rgba(0,180,219,0.6);
+    }
+    .footer { text-align: center; color: white; padding: 40px 20px; margin-top: 60px; }
+    .footer p { opacity: 0.8; }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Collection of Application</h1>
-  </header>
-  <main>
-    <div class="content-box">
-      <p>Welcome to the Collection of Application website.</p>
-      <p>Explore a curated set of useful and interesting applications.</p>
+  <div class="container">
+    <nav class="navbar">
+      <div class="logo">Collection of Application</div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#apps">Apps</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="https://www.whatsapp.com/channel/0029VaMatol8fews0k9JA31c" target="_blank">Join Channel</a></li>
+      </ul>
+    </nav>
+
+    <div class="hero" id="home">
+      <h1>Collection of Application</h1>
+      <p>Premium Apps for Everyone</p>
+      <div class="powered-by">Powered by M.K.S</div>
     </div>
-  </main>
-  <footer>
-    <p>Developed by M.K.S</p>
-  </footer>
+
+    <div class="stats">
+      <div class="stat-card">
+        <div class="stat-number">500K+</div>
+        <div class="stat-label">Active Learners</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">50K+</div>
+        <div class="stat-label">Batches</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">200K+</div>
+        <div class="stat-label">Members</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">99.9%</div>
+        <div class="stat-label">Server Uptime</div>
+      </div>
+    </div>
+
+    <div class="section" id="apps">
+      <h2>My Apps Collection</h2>
+      <p>Discover our premium modified Applications for Free</p>
+      <div class="apps-grid">
+        <div class="app-card">
+          <h3>All</h3>
+          <p>Browse our complete collection</p>
+        </div>
+        <div class="app-card">
+          <h3>Educational</h3>
+          <p>Learning made easy</p>
+        </div>
+        <div class="app-card">
+          <h3>New</h3>
+          <p>Latest releases</p>
+        </div>
+        <div class="app-card">
+          <h3>Popular</h3>
+          <p>Most downloaded apps</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section" id="about">
+      <h2>About Developer</h2>
+      <div class="developer">
+        <img src="https://i.postimg.cc/8z2mPFkw/c2de010a-0f3b-45b4-b760-0bff3a099d20.jpg" alt="M.K.S">
+        <div class="developer-info">
+          <h3>M.K.S</h3>
+          <p class="developer-quote">"Dream Big, Hustle Hard, and Never Stop Exploring!"</p>
+          <p><strong>Hey there!</strong> I'm Kumar (a.k.a. M.K.S)</p>
+          <p>Solo Developer - All projects built independently</p>
+          <br>
+          <p><strong>Education:</strong> Class 12th (PCM) | Batch: 2023-25</p>
+          <p><strong>Location:</strong> Bihar, India</p>
+          <p><strong>Birthday:</strong> 21st June | Age: 17</p>
+          <p><strong>Founder:</strong> Collection of Application</p>
+          <br>
+          <h4>Skills & Technologies</h4>
+          <div class="skills">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">HTML</span>
+            <span class="skill-tag">CSS</span>
+            <span class="skill-tag">Frida</span>
+            <span class="skill-tag">SSL Bypassing</span>
+            <span class="skill-tag">App Development</span>
+            <span class="skill-tag">UI/UX Design</span>
+            <span class="skill-tag">Frontend Dev</span>
+            <span class="skill-tag">Backend Dev</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section" id="contact">
+      <h2>Get In Touch</h2>
+      <p>Join our community and stay updated with the latest releases</p>
+      <div class="social-links">
+        <a href="https://www.whatsapp.com/channel/0029VaMatol8fews0k9JA31c" target="_blank" class="social-btn">WhatsApp Channel</a>
+        <a href="https://t.me/MadX_ABhi" target="_blank" class="social-btn">Telegram Channel</a>
+        <a href="https://www.instagram.com/as_multiverse.official" target="_blank" class="social-btn">Instagram</a>
+        <a href="https://youtube.com/@AS-Multiverse" target="_blank" class="social-btn">YouTube</a>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>&copy; 2022-25 Collection of Application</p>
+      <p>Developer: M.K.S</p>
+      <p>Where Education, Innovation & Technology Unite</p>
+      <p>Learn smarter. Access faster. Experience more.</p>
+    </div>
+  </div>
 </body>
 </html>
