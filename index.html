@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Collection of Application</title>
+  <style>
+    /* Teal/Green Gradient Background */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #008080, #20b2aa);
+      color: white;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      animation: backgroundShift 10s ease-in-out infinite alternate;
+    }
+
+    @keyframes backgroundShift {
+      0% {background: linear-gradient(135deg, #008080, #20b2aa);}
+      50% {background: linear-gradient(135deg, #006666, #3cb371);}
+      100% {background: linear-gradient(135deg, #008080, #20b2aa);}
+    }
+
+    header {
+      text-align: center;
+      padding: 3rem 1rem 1rem;
+      animation: fadeInDown 1.5s ease forwards;
+    }
+
+    @keyframes fadeInDown {
+      0% {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin: 0;
+      letter-spacing: 0.1em;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+    }
+
+    main {
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      animation: fadeInUp 1.5s ease forwards;
+      animation-delay: 1.5s;
+      opacity: 0;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+    }
+
+    .content-box {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 15px;
+      padding: 2rem 3rem;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      max-width: 600px;
+      text-align: center;
+      animation: pulseGlow 3s ease-in-out infinite;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% {
+        box-shadow: 0 0 15px 5px rgba(32, 178, 170, 0.6);
+      }
+      50% {
+        box-shadow: 0 0 25px 10px rgba(32, 178, 170, 0.9);
+      }
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 1rem;
+      background: rgba(0, 0, 0, 0.2);
+      color: #d0f0e0;
+      animation: fadeIn 2s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Collection of Application</h1>
+  </header>
+  <main>
+    <div class="content-box">
+      <p>Welcome to the Collection of Application website.</p>
+      <p>Explore a curated set of useful and interesting applications.</p>
+    </div>
+  </main>
+  <footer>
+    <p>Developed by M.K.S</p>
+  </footer>
+</body>
+</html>
